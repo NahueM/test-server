@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     console.log(log);
     fs.appendFile('server.log', log + '\n', e => {
         if (e) {
-            console.log('Todo Mal pero mal mal')
+            console.log('Algo anduvo mal')
         }
     })
     next();
@@ -51,6 +51,12 @@ app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
     });
+})
+
+app.get('/projects', (req, res)=>{
+    res.render('projects.hbs', {
+        pageTitle:'Projects',
+    })
 })
 
 app.listen(port, () => { console.log(`server escuchando en el puerto ${port}`) });
